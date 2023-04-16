@@ -10,18 +10,18 @@ next(f)
 #set variables
 total_num_votes = 0
 
-
-
 canidates= []
 canidates_votes = {}
 
+winner_name=""
+winner_votes=0
+winner_percentage = 0
 for row in csv_reader:
-    #total number of votes cast
+   
     total_num_votes += 1    
 
     canidate_name= row[2]
-    # A complete list of candidates who received votes  
-    # The total number of votes each candidate won
+    
     if canidate_name not in canidates:
          canidates.append(canidate_name) 
          canidates_votes[canidate_name] = 0
@@ -42,7 +42,12 @@ for canidate_name in canidates_votes:
      vote_percentage = (votes / total_num_votes) * 100
      results =(f'{canidate_name}: {round(vote_percentage,2)}% , ({votes})')
      print(results)
+     print(f'          ')
+     if (votes>winner_votes):
+          winner_name = canidate_name
+          winner_votes = votes
+          winner_percentage = vote_percentage
 
-print(f'                ')
-print(f'-----------------------')
-print(f'                ')
+print(f'-------------------------------')
+print(f'The winner of the election is {winner_name} with {winner_votes} votes and {round(winner_percentage,2)}% vote percentage.')
+print(f'             ')
