@@ -15,6 +15,7 @@ months = []
 
 profit_loss = []
 net_total = 0
+#Skip and store header row
 header=next(csv_reader)
 
 #create a function for average
